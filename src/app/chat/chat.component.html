@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="messages">
+    <app-message *ngFor="let message of chat.messages" [message]="message" />
+  </div>
+  <div class="creator">
+    <app-message-creator [chat]="chat" />
+  </div>
+</div>

@@ -8,6 +8,9 @@ import { GalleryItemComponent } from "./gallery-item/gallery-item.component";
 import { NgModule } from "@angular/core";
 import { SearchComponent } from "./search/search.component";
 import { ImagePageComponent } from './image-page/image-page.component';
+import { ChatComponent } from './chat/chat.component';
+import { MessageComponent } from './message/message.component';
+import { MessageCreatorComponent } from './message-creator/message-creator.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { ImagePageComponent } from './image-page/image-page.component';
     GalleryItemComponent,
     SearchComponent,
     ImagePageComponent,
+    ChatComponent,
+    MessageComponent,
+    MessageCreatorComponent,
   ],
   imports: [
     BrowserModule,

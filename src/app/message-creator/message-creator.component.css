@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  display: flex;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  padding: 5px;
+}
