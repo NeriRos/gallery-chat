@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  border: 1px solid silver;
+}
+
+.container h3 {
+  margin: 0;
+}
+
+.container span {
+  color: grey;
+}
+.container img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.body {
+  padding: 10px;
+
+}
