@@ -7,10 +7,6 @@ import { GalleryItem } from './gallery-item';
   templateUrl: './gallery-item.component.html',
   styleUrls: ['./gallery-item.component.css']
 })
-export class GalleryItemComponent implements OnInit {
+export class GalleryItemComponent {
   @Input() item!: GalleryItem;
-
-  ngOnInit(): void {
-    console.log("sadads", this.item)
-  }
 }

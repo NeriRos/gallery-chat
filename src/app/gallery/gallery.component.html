@@ -1,7 +1,10 @@
-<div class="gallery">
-  <app-gallery-item
-    *ngFor="let item of items"
-    class="gallery-item"
-    [item]="item"
-  ></app-gallery-item>
+<div class="container">
+  <app-search (searchEvent)="filterItems($event)" />
+  <div class="gallery">
+    <app-gallery-item
+      *ngFor="let item of filteredItems"
+      class="gallery-item"
+      [item]="item"
+    />
+  </div>
 </div>

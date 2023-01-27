@@ -20,6 +20,13 @@ path: "/assets/test.jpg"
 export const SampleGalleryItem: GalleryItem = {
 	author: TestUser,
 	description: "Lorem Ipsum",
-	title: "Developer's photo",
+	title: "Developer photo",
+	image: SampleImage,
+};
+
+export const SampleGalleryItem2: GalleryItem = {
+	author: TestUser,
+	description: "Lorem Ipsum",
+	title: "A Full Stack Developer photo",
 	image: SampleImage,
 };
