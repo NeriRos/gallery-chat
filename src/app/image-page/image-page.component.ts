@@ -18,7 +18,15 @@ export class ImagePageComponent {
 		private router: Router,
 	) {}
 
-	initiateGallery(id: string) {
+	initiateGallery() {
+		const id = this.route.snapshot.queryParams["id"];
+
+		if (!id) {
+			alert("Image id is required.");
+			this.router.navigate(["/"]);
+			return;
+		}
+
 		const galleryItem = this.galleryService.getItemById(id);
 
 		if (galleryItem) {
@@ -30,12 +38,6 @@ export class ImagePageComponent {
 	}
 
 	ngOnInit(): void {
-		this.route.queryParams.subscribe((params) => {
-			if (params["id"]) this.initiateGallery(params["id"]);
-			else {
-				alert("Image id is required.");
-				this.router.navigate(["/"]);
-			}
-		});
+		this.initiateGallery();
 	}
 }

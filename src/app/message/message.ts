@@ -1,15 +1,9 @@
-import { TestUser, User } from "../user";
+import { User } from "../user";
 
 export interface Message {
 	id: string;
 	chatId: string;
-	author: User;
+	date: Date;
+	sender: User;
 	text: string;
 }
-
-export const SampleMessage: Message = {
-	id: "message1",
-	chatId: "chat1",
-	author: TestUser,
-	text: "Nice image bro!",
-};
