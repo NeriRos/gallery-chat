@@ -5,19 +5,21 @@ export interface GalleryItem {
 	author: User;
 	title: string;
 	description: string;
+	id: string;
 }
 
 export interface Image {
-  id: string;
-  path: string;
+	id: string;
+	path: string;
 }
 
 export const SampleImage: Image = {
-id: "imageeeeID",
-path: "/assets/test.jpg"
-}
+	id: "imageeeeID",
+	path: "/assets/test.jpg",
+};
 
 export const SampleGalleryItem: GalleryItem = {
+	id: "test",
 	author: TestUser,
 	description: "Lorem Ipsum",
 	title: "Developer photo",
@@ -25,6 +27,7 @@ export const SampleGalleryItem: GalleryItem = {
 };
 
 export const SampleGalleryItem2: GalleryItem = {
+	id: "test2",
 	author: TestUser,
 	description: "Lorem Ipsum",
 	title: "A Full Stack Developer photo",

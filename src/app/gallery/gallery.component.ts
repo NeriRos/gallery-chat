@@ -5,26 +5,26 @@ import {
 	SampleGalleryItem2,
 } from "../gallery-item/gallery-item";
 
+import { GalleryService } from "../gallery.service";
+
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-	items: GalleryItem[] = [
-		SampleGalleryItem,
-		SampleGalleryItem,
-		SampleGalleryItem2,
-		SampleGalleryItem,
-		SampleGalleryItem2,
-		SampleGalleryItem,
-		SampleGalleryItem,
-		SampleGalleryItem2,
-	];
-	filteredItems = [...this.items];
+	items: GalleryItem[] = [];
+	filteredItems = this.items;
+
+	constructor(private galleryService: GalleryService) {}
+
+	initiateGallery() {
+		this.items = this.galleryService.getItems();
+		this.filteredItems = this.items;
+	}
 
 	ngOnInit(): void {
-		console.log("GALLERY ITEMS", this.items);
+		this.initiateGallery();
 	}
 
 	filterItems(searchText: string) {

@@ -7,6 +7,7 @@ import { GalleryComponent } from "./gallery/gallery.component";
 import { GalleryItemComponent } from "./gallery-item/gallery-item.component";
 import { NgModule } from "@angular/core";
 import { SearchComponent } from "./search/search.component";
+import { ImagePageComponent } from './image-page/image-page.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SearchComponent } from "./search/search.component";
     GalleryComponent,
     GalleryItemComponent,
     SearchComponent,
+    ImagePageComponent,
   ],
   imports: [
     BrowserModule,
