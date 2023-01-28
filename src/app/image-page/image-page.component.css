@@ -6,6 +6,7 @@
 .image-column {
   width: 70%;
   margin-right: 20px;
+  position: relative;
 }
 
 .image-column ::ng-deep img {
@@ -45,4 +46,13 @@
 .header h2 {
   padding-right: 5px;
   margin: 0;
+}
+
+.details {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: white;
+  padding: 8px;
+  border-radius: 10px;
 }
