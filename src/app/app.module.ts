@@ -4,8 +4,10 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { ChatComponent } from "./chat/chat.component";
+import { ChatService } from "./chat.service";
 import { GalleryComponent } from "./gallery/gallery.component";
 import { GalleryItemComponent } from "./gallery-item/gallery-item.component";
+import { GalleryService } from "./gallery.service";
 import { HttpClientModule } from "@angular/common/http";
 import { ImagePageComponent } from "./image-page/image-page.component";
 import { MessageComponent } from "./message/message.component";
@@ -31,7 +33,8 @@ import { SearchComponent } from "./search/search.component";
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

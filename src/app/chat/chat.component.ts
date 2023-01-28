@@ -33,7 +33,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 			await this.chatService.startConnection();
 			this.chatService.addReceiveMessageListener(this.chat.id);
 			this.$chat = this.chatService.chatObservable.subscribe((value) => {
-				console.log("valuevaluevalue", value);
 				this.updateChat(value);
 			});
 		} catch (error) {

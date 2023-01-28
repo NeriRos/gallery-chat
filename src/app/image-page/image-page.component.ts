@@ -27,6 +27,7 @@ export class ImagePageComponent {
 			return;
 		}
 
+		console.log("IIDDDD", id, this.galleryService.items);
 		const galleryItem = this.galleryService.getItemById(id);
 
 		if (galleryItem) {

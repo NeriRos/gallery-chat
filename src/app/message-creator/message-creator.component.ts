@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { TestUser, User } from "../user";
+import { User, getUser } from "../user";
 
-import { Chat } from "../chat/chat";
 import { ChatService } from "../chat.service";
 import { FormControl } from "@angular/forms";
-import { Message } from "../message/message";
 
 @Component({
   selector: 'app-message-creator',
@@ -13,8 +11,9 @@ import { Message } from "../message/message";
 })
 export class MessageCreatorComponent implements OnInit {
 	@Input() chatId!: string;
-	user: User = TestUser;
+	user: User = getUser();
 	messageControl = new FormControl("");
+	connected = false;
 
 	constructor(private chatService: ChatService) {}
 
@@ -28,7 +27,7 @@ export class MessageCreatorComponent implements OnInit {
 			return alert("Type a message");
 		}
 		const isOk = await this.chatService.createMessage(
-			this.user.username,
+			this.user,
 			this.chatId,
 			text,
 		);

@@ -1,10 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import {
-	GalleryItem,
-	SampleGalleryItem,
-	SampleGalleryItem2,
-} from "../gallery-item/gallery-item";
 
+import { GalleryItem } from "../gallery-item/gallery-item";
 import { GalleryService } from "../gallery.service";
 
 @Component({
@@ -19,8 +15,10 @@ export class GalleryComponent implements OnInit {
 	constructor(private galleryService: GalleryService) {}
 
 	initiateGallery() {
-		this.items = this.galleryService.getItems();
-		this.filteredItems = this.items;
+		this.galleryService.requestItems().subscribe((items) => {
+			this.items = items;
+			this.filteredItems = items;
+		});
 	}
 
 	ngOnInit(): void {
@@ -31,7 +29,7 @@ export class GalleryComponent implements OnInit {
 		this.filteredItems = this.items.filter(
 			(item) =>
 				item.title.startsWith(searchText) ||
-				item.author.name.startsWith(searchText),
+				item.author.fullname.startsWith(searchText),
 		);
 	}
 }
