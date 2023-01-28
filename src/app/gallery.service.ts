@@ -1,4 +1,4 @@
-import { Observable, Observer, ReplaySubject, Subject } from "rxjs";
+import { Observable, Observer, ReplaySubject, Subject, of } from "rxjs";
 
 import { GalleryItem } from "./gallery-item/gallery-item";
 import { HttpClient } from "@angular/common/http";
@@ -14,7 +14,10 @@ export class GalleryService {
 	constructor(private http: HttpClient) {}
 
 	getItemById(id: string) {
-		return this.items.filter((item) => item.id === id)[0];
+		const item = this.items.filter((item) => item.id === id)[0];
+		if (item) return of(item);
+
+		return this.http.get<GalleryItem>(`http://localhost:5251/image/${id}`);
 	}
 
 	requestItems() {

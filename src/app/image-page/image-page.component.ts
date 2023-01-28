@@ -27,15 +27,15 @@ export class ImagePageComponent {
 			return;
 		}
 
-		console.log("IIDDDD", id, this.galleryService.items);
-		const galleryItem = this.galleryService.getItemById(id);
+		this.galleryService.getItemById(id).subscribe((item) => {
+			if (!item) {
+				alert("Gallery item not found.");
+				this.router.navigate(["/"]);
+				return;
+			}
 
-		if (galleryItem) {
-			this.galleryItem = galleryItem;
-		} else {
-			alert("Image not found.");
-			this.router.navigate(["/"]);
-		}
+			this.galleryItem = item;
+		});
 	}
 
 	ngOnInit(): void {
