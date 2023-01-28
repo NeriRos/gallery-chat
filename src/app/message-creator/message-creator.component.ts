@@ -14,10 +14,10 @@ import { Message } from "../message/message";
 export class MessageCreatorComponent implements OnInit {
 	@Input() chatId!: string;
 	user: User = TestUser;
-
 	messageControl = new FormControl("");
 
 	constructor(private chatService: ChatService) {}
+
 	ngOnInit(): void {
 		console.log(this.chatId);
 	}

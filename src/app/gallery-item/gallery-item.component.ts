@@ -10,12 +10,10 @@ import { Router } from "@angular/router";
 })
 export class GalleryItemComponent {
 	@Input() item!: GalleryItem;
-	@Input() layout: string = "list-item";
 
 	constructor(private router: Router) {}
 
 	selectItem() {
-		console.log("ITEMTETME");
 		this.router.navigate(["/image"], { queryParams: { id: this.item.id } });
 	}
 }

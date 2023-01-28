@@ -1,20 +1,8 @@
-<div *ngIf="layout === 'list-item'; else gallary">
-  <div class="list-item-container" (click)="selectItem()">
-    <img src="{{ item.image.path }}" />
-    <div class="body">
-      <h3 class="title">{{ item.title }}</h3>
-      <span class="author">{{ item.author.name }}</span>
-      <p class="description">{{ item.description }}</p>
-    </div>
+<div class="list-item-container" (click)="selectItem()">
+  <img src="{{ item.image.path }}" />
+  <div class="body">
+    <h3 class="title">{{ item.title }}</h3>
+    <span class="author">{{ item.author.name }}</span>
+    <p class="description">{{ item.description }}</p>
   </div>
 </div>
-
-<ng-template #gallary>
-  <div class="gallery-container">
-    <div class="header">
-      <h2 class="title">{{ item.title }}</h2>
-      <span class="author">By {{ item.author.name }}</span>
-    </div>
-    <img src="{{ item.image.path }}" />
-  </div>
-</ng-template>

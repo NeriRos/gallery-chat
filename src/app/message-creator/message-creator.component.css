@@ -5,8 +5,16 @@
 
 input {
   width: 100%;
+  margin-right: 6px;
+  border: 1px solid silver;
+  padding-left: 6px;
+  border-radius: 0 0 0 4px;
 }
 
 button {
   padding: 5px;
+  background-color: #0081d1;
+  border: none;
+  color: white;
+  border-radius: 0 0 4px 0;
 }
