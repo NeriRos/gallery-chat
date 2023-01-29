@@ -10,7 +10,7 @@ import { GalleryService } from "../gallery.service";
   styleUrls: ['./image-page.component.css']
 })
 export class ImagePageComponent {
-	galleryItem!: GalleryItem;
+	galleryItem?: GalleryItem;
 
 	constructor(
 		private galleryService: GalleryService,

@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 	@Input() galleryItemId!: string;
 	chat!: Chat;
 
+	$messages?: Subscription;
 	$chat?: Subscription;
 
 	constructor(public chatService: ChatService) {}
@@ -30,11 +31,21 @@ export class ChatComponent implements OnInit, OnDestroy {
 		};
 
 		try {
-			await this.chatService.startConnection();
-			this.chatService.addReceiveMessageListener(this.chat.id);
-			this.$chat = this.chatService.chatObservable.subscribe((value) => {
-				this.updateChat(value);
-			});
+			await this.chatService.startConnection(this.chat.id);
+			this.chatService.addReceiveMessageListener();
+			this.chatService.chatObservable.subscribe(
+				(chat) =>
+					(this.chat = {
+						...chat,
+						id: chat.id || this.galleryItemId,
+						messages: chat.messages || [],
+					}),
+			);
+			this.$messages = this.chatService.messagesObservable.subscribe(
+				(value) => {
+					this.updateChat(value);
+				},
+			);
 		} catch (error) {
 			console.log("Error connecting to hub", error);
 		}
@@ -45,6 +56,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
+		this.$messages?.unsubscribe();
 		this.$chat?.unsubscribe();
 	}
 }

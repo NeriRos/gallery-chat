@@ -14,10 +14,16 @@ import { User } from "./user";
 export class ChatService {
 	private hubConnection?: signalR.HubConnection;
 	private server = "http://localhost:5251";
-	private $chat = new Subject<Message>();
+	private $messages = new Subject<Message>();
+	private $chat = new Subject<Chat>();
 	public isServerConnected = false;
+	public chat?: Chat;
 
-	public get chatObservable(): Observable<Message> {
+	public get messagesObservable(): Observable<Message> {
+		return this.$messages.asObservable();
+	}
+
+	public get chatObservable(): Observable<Chat> {
 		return this.$chat.asObservable();
 	}
 
@@ -36,7 +42,7 @@ export class ChatService {
 		}
 	}
 
-	startConnection = async () => {
+	startConnection = async (id: string) => {
 		this.hubConnection = new signalR.HubConnectionBuilder()
 			.withUrl(`${this.server}/chat`)
 			.build();
@@ -45,6 +51,9 @@ export class ChatService {
 			await this.hubConnection.start();
 
 			this.isServerConnected = true;
+			this.addInitListener();
+
+			await this.hubConnection?.send("init", id);
 
 			console.log("Socket connection started");
 		} catch (err) {
@@ -52,14 +61,22 @@ export class ChatService {
 		}
 	};
 
-	addReceiveMessageListener = (id: string) => {
-		if (this.hubConnection && id) {
-			console.log("Chat connected");
-			this.hubConnection.on(`new_message-${id}`, (message) => {
-				this.$chat.next(message);
+	addInitListener = () => {
+		if (this.hubConnection && this.isServerConnected) {
+			this.hubConnection.on("init", (chat) => {
+				this.$chat.next(chat);
 			});
 		} else {
-			console.log("NO MESSAGE LISTENER");
+			alert("Could not init chat");
+		}
+	};
+
+	addReceiveMessageListener = () => {
+		if (this.hubConnection && this.isServerConnected) {
+			this.hubConnection.on("newMessage", (message) => {
+				this.$messages.next(message);
+			});
+		} else {
 			alert("Could not receive messages");
 		}
 	};

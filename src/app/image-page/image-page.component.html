@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="galleryItem; else loading">
   <div class="header">
       <h2 class="title">{{ galleryItem.title }}</h2>
       <span class="author">By {{ galleryItem.author.fullname }}</span>
@@ -17,3 +17,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  loading
+</ng-template>
