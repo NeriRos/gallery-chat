@@ -38,11 +38,6 @@ export class ImagePageComponent {
 		});
 	}
 
-	showImageDetails = false;
-	hover(isOn: boolean) {
-		this.showImageDetails = isOn;
-	}
-
 	ngOnInit(): void {
 		this.initiateGallery();
 	}

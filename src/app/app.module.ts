@@ -14,6 +14,7 @@ import { MessageComponent } from "./message/message.component";
 import { MessageCreatorComponent } from "./message-creator/message-creator.component";
 import { NgModule } from "@angular/core";
 import { SearchComponent } from "./search/search.component";
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SearchComponent } from "./search/search.component";
     ChatComponent,
     MessageComponent,
     MessageCreatorComponent,
+    ImageComponent,
   ],
   imports: [
     AppRoutingModule,

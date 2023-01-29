@@ -1,0 +1,11 @@
+<div class="container">
+  <img
+    src="{{ image.path }}"
+    (mouseenter)="hover(true)"
+    (mouseleave)="hover(false)"
+  />
+  <div class="details" *ngIf="showImageDetails">
+    ID: {{ image.id }}
+    Size: {{ imageSize.height }}x{{ imageSize.width }}
+  </div>
+</div>

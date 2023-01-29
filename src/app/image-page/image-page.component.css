@@ -47,12 +47,3 @@
   padding-right: 5px;
   margin: 0;
 }
-
-.details {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: white;
-  padding: 8px;
-  border-radius: 10px;
-}

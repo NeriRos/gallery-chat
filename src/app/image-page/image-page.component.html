@@ -5,10 +5,7 @@
   </div>
   <div class="columns-container">
     <div class="image-column">
-      <img src="{{ galleryItem.image.path }}"  (mouseenter)="hover(true)" (mouseleave)="hover(false)" />
-      <div class="details" *ngIf="showImageDetails">
-        ID: {{galleryItem.image.id}}
-      </div>
+      <app-image [image]="galleryItem.image" />
     </div>
     <div class="chat-column">
       <div class="chat-header">

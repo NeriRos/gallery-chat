@@ -1,5 +1,5 @@
 <div class="list-item-container" (click)="selectItem()">
-  <img src="{{ item.image.path }}" />
+  <app-image [image]="item.image" />
   <div class="body">
     <h3 class="title">{{ item.title }}</h3>
     <span class="author">{{ item.author.fullname }}</span>
